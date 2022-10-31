@@ -1,0 +1,36 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="Dmitrii Startsev" id="add-users-table">
+        <validCheckSum>ANY</validCheckSum>
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="USERS"/>
+            </not>
+        </preConditions>
+        <createTable tableName="USERS">
+            <column name="USER_ID" type="BIGSERIAL">
+                <constraints primaryKey="true" unique="true" uniqueConstraintName="user_id_unique" nullable="false"/>
+            </column>
+            <column name="USER_NAME" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Dmitrii Startsev" id="add-master-to-user-table">
+        <validCheckSum>ANY</validCheckSum>
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="USERS"/>
+        </preConditions>
+        <sql>
+            INSERT INTO USERS values
+            (1, 'Van Darkholme');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

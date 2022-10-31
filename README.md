@@ -1,2 +1,13 @@
-# sberops_f2022
-Sbertech DEVOPS course
+# Доступные endpoint
+
+- localhost:8080/greeting/{name} - приветствие user с именем name
+- localhost:8080/greeting/master - приветствие ♂ Dungeon Master ♂ данного приложения
+
+# Инструкция по запуску
+
+0. Если вы хотите собрать образ backend локально,  воспользуйтесь сначала скриптом `create-jar.sh` для создания .jar файла,  а затем запустите `build.sh`. Все необходимые скрипты вы сможете найти в папке simpleApp/docker/
+1. Выполните скрипт `start.sh`
+2. Для остановки контейнеров используйте `stop.sh`,  для удаления - `down.sh`,  для удаления образов - `clear-images.sh`
+
+# P.S.
+Не забудьте запустить Docker
