@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+
+  ansible-server:
+    build: ../ansible/
+    image: ansible
+    container_name: ansible
+    volumes:
+      - ../ansible/:/ansible
+
+      # very unsecure, but ansible-docker need it
+      - /var/run/docker.sock:/var/run/docker.sock
+
+      # satisfying docker restricts
+      - /tmp/ansible-project:/tmp
+
+    command: ansible-playbook playbook.yml -i inventories/servers.yml
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.4
+    restart: on-failure
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

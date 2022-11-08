@@ -1,0 +1,72 @@
+
+- name: Install Docker SDK for Python
+  pip:
+    name:
+      - "docker<5"
+  become: yes
+
+- name: Create docker network
+  docker_network:
+    name: app-network-dev
+
+- name: Create dev directory
+  file:
+    path: /tmp/dev
+    state: directory
+    mode: 0777
+    recurse: yes
+
+- name: Clone repo with source code
+  git:
+    repo: https://github.com/star1can/sberops_f2022.git
+    dest: /tmp/dev/repo
+    version: hw1
+    force: true
+
+- name: Copy properties
+  copy:
+    src: application.properties
+    dest: /tmp/dev/repo/simpleApp/greeting-service/
+
+- name: Create directory for jars
+  file:
+    path: /tmp/dev/repo/simpleApp/greeting-service/target
+    state: directory
+    mode: 0777
+
+# just satisfying first run, but better build it with scripts
+- name: Copy jar file for first run
+  copy:
+    src: greeting-service-0.0.1-SNAPSHOT.jar
+    dest: /tmp/dev/repo/simpleApp/greeting-service/target
+
+- name: Create db container for dev
+  docker_container:
+    image: postgres
+    name: dev-db
+    state: started
+    ports: "5434:5432"
+    env:
+        POSTGRES_USER: "{{USER}}"
+        POSTGRES_PASSWORD: "{{PASSWORD}}"
+        POSTGRES_DB: "{{DB_NAME}}"
+        POSTGRES_HOST: "{{HOST}}"
+        POSTGRES_PORT: "{{PORT}}"
+    networks:
+      - name: app-network-dev
+    volumes:
+      - /tmp/dev/dev-db/data:/var/lib/postgresql/data
+    restart_policy: on-failure
+
+- name: Create backend container for dev
+  docker_container:
+    image: openjdk:17-oracle
+    name: greeting-service-dev
+    state: started
+    ports: "8081:8080"
+    command: java -jar /app/target/greeting-service-0.0.1-SNAPSHOT.jar --spring.config.location=/app/application.properties
+    volumes:
+      - /tmp/ansible-project/dev/repo/simpleApp/greeting-service:/app
+    networks:
+      - name: app-network-dev
+    restart_policy: always

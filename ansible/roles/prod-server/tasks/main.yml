@@ -1,0 +1,57 @@
+
+- name: Install Docker SDK for Python
+  pip:
+    name:
+      - "docker<5"
+  become: yes
+
+- name: Create docker network
+  docker_network:
+    name: app-network-prod
+
+- name: Create prod directory
+  file:
+    path: /tmp/prod/exec
+    state: directory
+    mode: 0777
+    recurse: yes
+
+- name: Copy properties
+  copy:
+    src: application.properties
+    dest: /tmp/prod/exec
+
+- name: Copy jar
+  copy:
+    src: greeting-service-0.0.1-SNAPSHOT.jar
+    dest: /tmp/prod/exec
+
+- name: Create db container
+  docker_container:
+    image: postgres
+    name: prod-db
+    state: started
+    ports: "5433:5432"
+    env:
+        POSTGRES_USER: "{{USER}}"
+        POSTGRES_PASSWORD: "{{PASSWORD}}"
+        POSTGRES_DB: "{{DB_NAME}}"
+        POSTGRES_HOST: "{{HOST}}"
+        POSTGRES_PORT: "{{PORT}}"
+    networks:
+      - name: app-network-prod
+    volumes:
+      - /tmp/ansible-project/prod/prod-db/data:/var/lib/postgresql/data
+    restart_policy: on-failure
+
+- name: Create backend container
+  docker_container:
+    image: starican/greeting-service
+    name: greeting-service
+    state: started
+    ports: "8080:8080"
+    volumes:
+      - /tmp/ansible-project/prod/exec:/app
+    networks:
+      - name: app-network-prod
+    restart_policy: always

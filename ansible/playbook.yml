@@ -1,0 +1,5 @@
+- name: Apply production role to server
+  hosts: 127.0.0.1
+  roles:
+    - roles/dev-server
+    - roles/prod-server
