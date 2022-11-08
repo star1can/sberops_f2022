@@ -34,7 +34,7 @@
     state: directory
     mode: 0777
 
-# just satisfying first run, but better build it with scripts
+# just satisfying first run, but better build it with scripts, or getting from NEXUS
 - name: Copy jar file for first run
   copy:
     src: greeting-service-0.0.1-SNAPSHOT.jar
@@ -55,7 +55,17 @@
     networks:
       - name: app-network-dev
     volumes:
-      - /tmp/dev/dev-db/data:/var/lib/postgresql/data
+      - /tmp/ansible-project/dev/dev-db/data:/var/lib/postgresql/data
+    restart_policy: on-failure
+
+- name: Create adminer for db
+  docker_container:
+    image: adminer
+    name: adminer
+    state: started
+    ports: "8083:8080"
+    networks:
+      - name: app-network-dev
     restart_policy: on-failure
 
 - name: Create backend container for dev

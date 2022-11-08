@@ -21,6 +21,7 @@
     src: application.properties
     dest: /tmp/prod/exec
 
+  # VERY BAD! BETTER TO DO IT WITH NEXUS, GIT E.T.C.
 - name: Copy jar
   copy:
     src: greeting-service-0.0.1-SNAPSHOT.jar

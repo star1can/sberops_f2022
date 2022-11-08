@@ -1,4 +1,4 @@
-- name: Apply production role to server
+- name: Apply roles to localhsot
   hosts: 127.0.0.1
   roles:
     - roles/dev-server
