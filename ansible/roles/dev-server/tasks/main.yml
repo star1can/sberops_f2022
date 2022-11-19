@@ -72,4 +72,4 @@
       - /tmp/ansible-project/dev/repo/simpleApp/greeting-service:/app
     networks:
       - name: app-network-dev
-    restart_policy: always
+    restart_policy: on-failure

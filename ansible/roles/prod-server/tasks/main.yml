@@ -50,4 +50,4 @@
       - /tmp/ansible-project/prod/config:/app/config
     networks:
       - name: app-network-prod
-    restart_policy: always
+    restart_policy: on-failure
