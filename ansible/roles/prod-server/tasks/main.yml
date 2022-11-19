@@ -11,7 +11,7 @@
 
 - name: Create prod directory
   file:
-    path: /tmp/prod/exec
+    path: /tmp/prod/config
     state: directory
     mode: 0777
     recurse: yes
@@ -19,13 +19,7 @@
 - name: Copy properties
   copy:
     src: application.properties
-    dest: /tmp/prod/exec
-
-  # VERY BAD! BETTER TO DO IT WITH NEXUS, GIT E.T.C.
-- name: Copy jar
-  copy:
-    src: greeting-service-0.0.1-SNAPSHOT.jar
-    dest: /tmp/prod/exec
+    dest: /tmp/prod/config
 
 - name: Create db container
   docker_container:
@@ -51,8 +45,9 @@
     name: greeting-service
     state: started
     ports: "8080:8080"
+    command: java -jar /app/greeting-service-0.0.1-SNAPSHOT.jar --spring.config.location=/app/config/application.properties
     volumes:
-      - /tmp/ansible-project/prod/exec:/app
+      - /tmp/ansible-project/prod/config:/app/config
     networks:
       - name: app-network-prod
     restart_policy: always

@@ -28,17 +28,10 @@
     src: application.properties
     dest: /tmp/dev/repo/simpleApp/greeting-service/
 
-- name: Create directory for jars
-  file:
-    path: /tmp/dev/repo/simpleApp/greeting-service/target
-    state: directory
-    mode: 0777
-
-# just satisfying first run, but better build it with scripts, or getting from NEXUS
-- name: Copy jar file for first run
+- name: Copy script
   copy:
-    src: greeting-service-0.0.1-SNAPSHOT.jar
-    dest: /tmp/dev/repo/simpleApp/greeting-service/target
+    src: build_and_run.sh
+    dest: /tmp/dev/repo/simpleApp/greeting-service/
 
 - name: Create db container for dev
   docker_container:
@@ -74,7 +67,7 @@
     name: greeting-service-dev
     state: started
     ports: "8081:8080"
-    command: java -jar /app/target/greeting-service-0.0.1-SNAPSHOT.jar --spring.config.location=/app/application.properties
+    command: /app/build_and_run.sh
     volumes:
       - /tmp/ansible-project/dev/repo/simpleApp/greeting-service:/app
     networks:
