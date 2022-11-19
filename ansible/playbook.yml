@@ -1,5 +1,5 @@
 - name: Apply roles to localhsot
   hosts: 127.0.0.1
   roles:
-    # - roles/dev-server
+    - roles/dev-server
     - roles/prod-server
