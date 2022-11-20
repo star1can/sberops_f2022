@@ -17,16 +17,16 @@ public class GreetingController {
     private final UserJpaRepository repository;
 
     @GetMapping("/{name}")
-    public ResponseEntity<String> userGreeting(@PathVariable String name) {
+    public @ResponseBody String userGreeting(@PathVariable String name) {
         return greet(name);
     }
 
     @GetMapping("/master")
-    public ResponseEntity<String> masterGreeting() {
+    public @ResponseBody String masterGreeting() {
         return greet(repository.findByName("Van Darkholme").getName());
     }
 
-    private ResponseEntity<String> greet(String name) {
-        return ResponseEntity.ok("Guten Tag Herr " + name + "!");
+    private String greet(String name) {
+        return "Guten Tag Herr " + name + "!";
     }
 }
