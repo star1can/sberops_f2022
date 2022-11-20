@@ -7,6 +7,13 @@ pipeline {
     agent any
 
     stages {
+        stage('Access right directory') {
+            steps {
+                script {
+                    sh 'cd simpleApp/greeting-service'
+                }
+            }
+        }
         stage('Build') {
             steps {
                 withMaven(maven: 'Maven 3.5.2') {
