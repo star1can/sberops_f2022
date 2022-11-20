@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 withMaven(maven: 'Maven 3.5.2') {
-                    sh 'mvn clean install'
+                    sh 'mvn clean package'
                     sh 'mvn dependency:tree'
                 }
             }
