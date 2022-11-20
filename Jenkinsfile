@@ -17,17 +17,8 @@ pipeline {
         stage('Build') {
             steps {
                 withMaven(maven: 'Maven 3.5.2') {
-                    sh 'mvn clean install'
-                    sh 'mvn dependency:tree'
-                }
-            }
-        }
-
-        stage('Test') {
-            steps {
-                withMaven(maven: 'Maven 3.5.2') {
-                    sh 'mvn clean install'
-                    sh 'mvn dependency:tree'
+                    sh 'mvn -f ("./simpleApp/greeting-service/pom.xml") clean install'
+                    sh 'mvn -f ("./simpleApp/greeting-service/pom.xml") dependency:tree'
                 }
             }
         }
