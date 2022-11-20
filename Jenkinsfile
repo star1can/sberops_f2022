@@ -25,6 +25,16 @@ pipeline {
     }
 
     post {
-        allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+        always {
+            script {
+                 allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'target/allure-results']]
+                 ])
+            }
+        }
     }
 }
