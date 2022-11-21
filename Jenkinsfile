@@ -15,6 +15,20 @@ pipeline {
             }
         }
 
+        stage('SQ') {
+            steps {
+                withSonarQubeEnv(credentialsId: 'sberops_sq', installationName: 'SonarQube') {
+                    withMaven(maven: 'Maven 3.5.2') {
+                        script {
+                            sh """
+                            mvn sonar:sonar -Dsonar.branch.name=develop
+                            """
+                        }
+                    }
+                }
+            }
+        }
+
         stage('Test') {
             steps {
                 withMaven(maven: 'Maven 3.5.2') {
