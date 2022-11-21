@@ -18,7 +18,7 @@
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
         <sonar.language>java</sonar.language>
-        <sonar.exclusions>src/main/java/org.startsevds/entity/*</sonar.exclusions>
+        <sonar.exclusions>src/main/java/org/startsevds/entity/*</sonar.exclusions>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <aspectj.version>1.9.9.1</aspectj.version>
         <allure-junit4.version>2.6.0</allure-junit4.version>
