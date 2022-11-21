@@ -17,7 +17,7 @@ pipeline {
 
         stage('SQ') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sberops_sq', installationName: 'SonarQube') {
+                withSonarQubeEnv(credentialsId: 'sq_secret', installationName: 'SonarQube') {
                     withMaven(maven: 'Maven 3.5.2') {
                         script {
                             sh """
