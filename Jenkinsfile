@@ -21,7 +21,14 @@ pipeline {
                     withMaven(maven: 'Maven 3.5.2') {
                         script {
                             sh """
-                            mvn sonar:sonar
+                            mvn sonar:sonar -Dsonar.sources=src/main
+                                            -Dsonar.language=java
+                                            -Dsonar.tests=src/test
+                                            -Dsonar.junit.reportsPath=target/surefire-reports
+                                            -Dsonar.surefire.reportsPath=target/surefire-reports
+                                            -Dsonar.jacoco.xmlReportPath=target/jacoco.exec
+                                            -Dsonar.java.coveragePlugin=jacoco
+                                            -Dsonar.verbose=true
                             """
                         }
                     }
