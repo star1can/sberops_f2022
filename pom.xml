@@ -15,10 +15,6 @@
     <name>greeting-service</name>
     <description>greeting-service</description>
     <properties>
-        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-        <sonar.jacoco.xmlReportPaths>${project.basedir}/../target/jacoco.exec</sonar.jacoco.xmlReportPaths>
-        <sonar.language>java</sonar.language>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <aspectj.version>1.8.10</aspectj.version>
         <allure-junit4.version>2.6.0</allure-junit4.version>
@@ -82,7 +78,7 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.9.0.2155</version>
+                <version>3.4.0.905</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
