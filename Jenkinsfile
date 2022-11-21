@@ -21,7 +21,7 @@ pipeline {
                     withMaven(maven: 'Maven 3.5.2') {
                         script {
                             sh """
-                            mvn sonar:sonar -Dsonar.branch.name=develop
+                            mvn sonar:sonar
                             """
                         }
                     }
