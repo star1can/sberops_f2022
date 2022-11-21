@@ -38,17 +38,17 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            script {
-                 allure([
-                    includeProperties: false,
-                    jdk: '',
-                    properties: [],
-                    reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'target/allure-results']]
-                 ])
-            }
-        }
-    }
+//     post {
+//         always {
+//             script {
+//                  allure([
+//                     includeProperties: false,
+//                     jdk: '',
+//                     properties: [],
+//                     reportBuildPolicy: 'ALWAYS',
+//                     results: [[path: 'target/allure-results']]
+//                  ])
+//             }
+//         }
+//     }
 }
