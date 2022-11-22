@@ -12,7 +12,7 @@ pipeline {
 
         stage('SQ') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sq_secret', installationName: 'SonarQube') {
+                withSonarQubeEnv(credentialsId: 'sq_secret_token', installationName: 'SonarQube') {
                     withMaven(maven: 'Maven 3.5.2') {
                         script {
                             sh """
