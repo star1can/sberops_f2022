@@ -41,7 +41,7 @@
 
 - name: Create backend container
   docker_container:
-    image: starican/greeting-service
+    image: tuzzik/greeting-service
     name: greeting-service
     state: started
     ports: "8080:8080"

@@ -32,9 +32,26 @@ pipeline {
             }
         }
 
+        stage('Docker build') {
+            steps {
+                sh 'docker build -t tuzzik/greeting-service:latest .'
+            }
+        }
+
+        stage('Docker push') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                  sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                  sh 'docker push tuzzik/greeting-service:latest'
+                }
+            }
+        }
+
         stage('Ansible') {
             steps {
-                sh 'deploy/docker/start.sh'
+                timeout(time: 30, unit:'SECONDS') {
+                    sh 'deploy/docker/start.sh'
+                }
             }
         }
     }
