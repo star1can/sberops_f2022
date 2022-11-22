@@ -39,7 +39,7 @@ pipeline {
 
         stage('Ansible') {
             steps {
-                sh 'ansible-playbook ansible/playbook.yml -i ansible/inventories/servers.yml'
+                sh 'ansible --version'
             }
         }
     }
