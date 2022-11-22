@@ -39,7 +39,7 @@ pipeline {
 
         stage('Ansible') {
             steps {
-                sh 'docker --version'
+                sh 'docker-compose --version'
             }
         }
     }
