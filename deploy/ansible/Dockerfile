@@ -9,4 +9,4 @@ COPY . /ansible
 # change workdir
 WORKDIR /ansible
 
-CMD [ "" ] 
+CMD [ "" ]
