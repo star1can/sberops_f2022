@@ -13,13 +13,4 @@ services:
       - /tmp/ansible-project:/tmp
 
     command: ansible-playbook playbook.yml -i inventories/servers.yml
-    networks:
-      static-network:
-        ipv4_address: 172.20.128.4
     restart: on-failure
-
-networks:
-  static-network:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
