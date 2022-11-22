@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build && Test') {
             steps {
                 withMaven(maven: 'Maven 3.5.2') {
                     sh 'mvn clean install'
@@ -20,14 +20,6 @@ pipeline {
                             """
                         }
                     }
-                }
-            }
-        }
-
-        stage('Test') {
-            steps {
-                withMaven(maven: 'Maven 3.5.2') {
-                    sh 'mvn test'
                 }
             }
         }
