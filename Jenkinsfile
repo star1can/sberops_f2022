@@ -36,6 +36,12 @@ pipeline {
                 }
             }
         }
+
+        stage('Ansible') {
+            steps {
+                ansiblePlaybook(inventory: 'ansible/inventories/servers.yml', playbook: 'playbook.yml')
+            }
+        }
     }
 
     post {

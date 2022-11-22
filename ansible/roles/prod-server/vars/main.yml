@@ -1,0 +1,5 @@
+USER: "user"
+PASSWORD: "password"
+DB_NAME: "app-db"
+HOST: "localhost"
+PORT: "5432"

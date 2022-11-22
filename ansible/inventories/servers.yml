@@ -1,0 +1,3 @@
+all:
+  hosts:
+    # your servers will be there
