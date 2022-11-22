@@ -39,7 +39,7 @@ pipeline {
 
         stage('Ansible') {
             steps {
-                ansiblePlaybook(inventory: 'ansible/inventories/servers.yml', playbook: 'ansible/playbook.yml')
+                sh 'ansible-playbook ansible/playbook.yml -i ansible/inventories/servers.yml'
             }
         }
     }
