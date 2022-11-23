@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<l:dependencies xmlns:l='licenses' groupId='de.jamba.hudson.plugin.wsclean' artifactId='hudson-wsclean-plugin' version='1.0.8'><l:dependency name='Distributed Workspace Clean plugin' groupId='de.jamba.hudson.plugin.wsclean' artifactId='hudson-wsclean-plugin' version='1.0.8' url='https://github.com/jenkinsci/wsclean-plugin'><l:description>This plugin cleans all old workspace directories used by the job</l:description><l:license name='MIT License' url='https://opensource.org/licenses/MIT'/></l:dependency></l:dependencies>

@@ -1,27 +1,24 @@
 Manifest-Version: 1.0
-Archiver-Version: Plexus Archiver
-Created-By: Apache Maven
-Built-By: meneses
-Build-Jdk: 11.0.3
-Extension-Name: sonar
-Specification-Title: The Jenkins Plugins Parent POM Project
+Created-By: Maven Archiver 3.6.0
+Build-Jdk-Spec: 17
+Specification-Title: SonarQube Scanner for Jenkins
+Specification-Version: 2.15
 Specification-Vendor: SonarSource
+Implementation-Title: SonarQube Scanner for Jenkins
+Implementation-Version: 2.15
 Implementation-Vendor: SonarSource
-Implementation-Title: sonar
-Implementation-Version: 2.14
 Plugin-Class: hudson.plugins.sonar.SonarPlugin
 Group-Id: org.jenkins-ci.plugins
 Short-Name: sonar
 Long-Name: SonarQube Scanner for Jenkins
 Url: https://github.com/jenkinsci/sonarqube-plugin
-Minimum-Java-Version: 1.8
-Plugin-Version: 2.14
-Hudson-Version: 2.222.4
-Jenkins-Version: 2.222.4
-Plugin-Dependencies: caffeine-api:2.9.1-23.v51c4e2c879c8,maven-plugin:
- 2.17;resolution:=optional,workflow-support:3.8;resolution:=optional,c
- onfigurationslicing:1.47;resolution:=optional,credentials:2.5,plain-c
- redentials:1.7
+Plugin-Version: 2.15
+Hudson-Version: 2.361.1
+Jenkins-Version: 2.361.1
+Plugin-Dependencies: caffeine-api:2.9.3-65.v6a_47d0f4d1fe,maven-plugin:2
+ .17;resolution:=optional,workflow-support:838.va_3a_087b_4055b;resoluti
+ on:=optional,configurationslicing:1.47;resolution:=optional,credentials
+ :1139.veb_9579fca_33b_,plain-credentials:139.ved2b_9cf7587b
 Plugin-Developers: 
 Plugin-License-Name: GNU Lesser General Public License (LGPL), v.3
 Plugin-License-Url: https://www.gnu.org/licenses/lgpl.txt

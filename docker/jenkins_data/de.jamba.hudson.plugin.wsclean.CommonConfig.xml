@@ -1,0 +1,8 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<de.jamba.hudson.plugin.wsclean.CommonConfig plugin="hudson-wsclean-plugin@1.0.8">
+  <nodeSelection>LABEL_ONLY</nodeSelection>
+  <skipRoaming>true</skipRoaming>
+  <parallel>true</parallel>
+  <nodeNamesToSkip/>
+  <timeoutInMilliseconds>900000</timeoutInMilliseconds>
+</de.jamba.hudson.plugin.wsclean.CommonConfig>

@@ -1,9 +1,9 @@
 <?xml version='1.1' encoding='UTF-8'?>
-<hudson.plugins.sonar.SonarGlobalConfiguration plugin="sonar@2.14">
+<hudson.plugins.sonar.SonarGlobalConfiguration plugin="sonar@2.15">
   <installations>
     <hudson.plugins.sonar.SonarInstallation>
       <name>SonarQube</name>
-      <serverUrl>http://sonarqube:9000</serverUrl>
+      <serverUrl>http://172.20.127.2:9000</serverUrl>
       <credentialsId>sq_secret_token</credentialsId>
       <webhookSecretId></webhookSecretId>
       <mojoVersion></mojoVersion>

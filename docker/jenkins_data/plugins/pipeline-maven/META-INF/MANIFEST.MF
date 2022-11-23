@@ -4,13 +4,12 @@ Build-Jdk-Spec: 11
 Specification-Title: Pipeline Maven Integration Plugin
 Specification-Version: 0.0
 Implementation-Title: Pipeline Maven Integration Plugin
-Implementation-Version: 1226.v833b_d9f526b_9
+Implementation-Version: 1235.v2db_ddd9f797b
 Group-Id: org.jenkins-ci.plugins
 Short-Name: pipeline-maven
 Long-Name: Pipeline Maven Integration Plugin
-Url: https://github.com/jenkinsci/pipeline-maven-plugin/blob/master/READ
- ME.adoc
-Plugin-Version: 1226.v833b_d9f526b_9
+Url: https://github.com/jenkinsci/pipeline-maven-plugin/
+Plugin-Version: 1235.v2db_ddd9f797b
 Hudson-Version: 2.319.3
 Jenkins-Version: 2.319.3
 Plugin-Dependencies: h2-api:1.4.199,mysql-api:8.0.16;resolution:=optiona

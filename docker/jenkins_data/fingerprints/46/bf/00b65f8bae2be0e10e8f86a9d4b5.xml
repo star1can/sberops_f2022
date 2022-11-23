@@ -1,0 +1,17 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2022-11-23 13:04:08.661 UTC</timestamp>
+  <original>
+    <name>sberops-pipeline</name>
+    <number>3</number>
+  </original>
+  <md5sum>46bf00b65f8bae2be0e10e8f86a9d4b5</md5sum>
+  <fileName>org/startsevds/greeting-service/0.0.1-SNAPSHOT/greeting-service-0.0.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>sberops-pipeline</string>
+      <ranges>3</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>

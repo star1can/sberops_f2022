@@ -27,12 +27,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>pipeline-maven</artifactId>
-  <version>1226.v833b_d9f526b_9</version>
+  <version>1235.v2db_ddd9f797b</version>
   <packaging>hpi</packaging>
   <name>Pipeline Maven Integration Plugin</name>
   <description>This plugin provides integration with Pipeline, configures maven environment to use within a pipeline job by calling sh mvn or bat mvn.
     The selected maven installation will be configured and prepended to the path.</description>
-  <url>https://github.com/jenkinsci/pipeline-maven-plugin/blob/master/README.adoc</url>
+  <url>https://github.com/jenkinsci/pipeline-maven-plugin/</url>
   <inceptionYear>2016</inceptionYear>
   <licenses>
     <license>
@@ -66,7 +66,7 @@
   <scm>
     <connection>scm:git:https://github.com/jenkinsci/pipeline-maven-plugin.git/pipeline-maven</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/pipeline-maven-plugin.git/pipeline-maven</developerConnection>
-    <tag>833bd9f526b9d6f421cc8a51077e73bec5e10a99</tag>
+    <tag>2dbddd9f797b7b7a9348048df79e3a5565c23c7c</tag>
     <url>https://github.com/jenkinsci/pipeline-maven-plugin/pipeline-maven</url>
   </scm>
   <distributionManagement>
@@ -387,13 +387,6 @@
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>net.jcip</groupId>
-      <artifactId>jcip-annotations</artifactId>
-      <version>1.0</version>
-      <scope>provided</scope>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.codehaus.mojo</groupId>
