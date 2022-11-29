@@ -4,8 +4,9 @@ metadata:
   name: back-cm
   namespace: default
 data:
-  application.properties: |
-    spring.datasource.url=jdbc:postgresql://prod-db:5432/app-db
+  application.properties: |-
+    spring.profiles.active=prod
+    spring.datasource.url=jdbc:postgresql://postgres:5432/app-db
     spring.datasource.username=user
     spring.datasource.password=password
 

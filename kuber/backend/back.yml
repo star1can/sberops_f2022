@@ -21,14 +21,13 @@ spec:
       containers:
       - image: tuzzik/greeting-service
         name: greeting-service-container
-        command:
-          - java -jar /app/greeting-service-0.0.1-SNAPSHOT.jar --spring.config.location=/app/config/application.properties
         ports:
         - containerPort: 8080
           name: back-port
         volumeMounts:
         - name: config
-          mountPath: /app/config/
+          mountPath: /app/application.properties
+          subPath: application.properties
           readOnly: true
         imagePullPolicy: IfNotPresent
 
@@ -39,3 +38,15 @@ spec:
           items:
           - key: application.properties
             path: application.properties
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: greeting-service
