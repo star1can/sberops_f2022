@@ -81,10 +81,12 @@ pipeline {
         }
 
         stage('Ansible') {
-            script {
-                if(TESTS_PASSED == "true") {
-                    timeout(time: 30, unit:'SECONDS') {
-                        sh 'deploy/docker/start.sh'
+            steps {
+                script {
+                    if(TESTS_PASSED == "true") {
+                        timeout(time: 30, unit:'SECONDS') {
+                            sh 'deploy/docker/start.sh'
+                        }
                     }
                 }
             }
