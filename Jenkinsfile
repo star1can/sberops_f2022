@@ -23,8 +23,8 @@ pipeline {
 
             post {
                 success {
-                    TESTS_PASSED = "true"
                     script {
+                        TESTS_PASSED = "true"
                          allure([
                             includeProperties: false,
                             jdk: '',
@@ -39,10 +39,10 @@ pipeline {
 
         stage('SQ') {
             steps {
-                if(TESTS_PASSED == "true") {
-                    withSonarQubeEnv(credentialsId: 'sq_secret_token', installationName: 'SonarQube') {
-                        withMaven(maven: 'Maven 3.5.2') {
-                            script {
+                withSonarQubeEnv(credentialsId: 'sq_secret_token', installationName: 'SonarQube') {
+                    withMaven(maven: 'Maven 3.5.2') {
+                        script {
+                            if(TESTS_PASSED == "true") {
                                 sh """
                                 mvn sonar:sonar
                                 """
@@ -55,29 +55,33 @@ pipeline {
 
         stage('Docker build') {
             steps {
-                if(TESTS_PASSED == "true") {
-                    sh 'docker build -t tuzzik/greeting-service:latest .'
+                script {
+                    if(TESTS_PASSED == "true") {
+                        sh 'docker build -t tuzzik/greeting-service:latest .'
+                    }
                 }
             }
         }
 
         stage('Docker push') {
             steps {
-                if(TESTS_PASSED == "true") {
-                    withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-                      sh """
-                      docker login \
-                      -u ${env.dockerHubUser} \
-                      -p ${env.dockerHubPassword}
-                      """
-                      sh 'docker push tuzzik/greeting-service:latest'
+                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                    script {
+                        if(TESTS_PASSED == "true") {
+                              sh """
+                              docker login \
+                              -u ${env.dockerHubUser} \
+                              -p ${env.dockerHubPassword}
+                              """
+                              sh 'docker push tuzzik/greeting-service:latest'
+                        }
                     }
                 }
             }
         }
 
         stage('Ansible') {
-            steps {
+            script {
                 if(TESTS_PASSED == "true") {
                     timeout(time: 30, unit:'SECONDS') {
                         sh 'deploy/docker/start.sh'
